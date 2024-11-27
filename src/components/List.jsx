@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Create from './Create'; 
+import Create from './Create';
+import pen from '../assets/images/pen.png';
+import trash from '../assets/images/trash.png';
+
 
 const List = () => {
     const [notes, setNotes] = useState([]);
@@ -27,10 +30,10 @@ const List = () => {
 
     const startEditing = (note) => {
         setNoteToEdit(note);
-        setShowCreate(true); 
+        setShowCreate(true);
     };
 
-    const deleteNote = async (id) =>{
+    const deleteNote = async (id) => {
         const token = localStorage.getItem('token');
         await axios.delete(`https://notes.devlop.tech/api/notes/${id}`, {
             headers: {
@@ -38,7 +41,7 @@ const List = () => {
             },
         });
         setNotes(notes.filter(note => note.id !== id));
-        
+
     }
 
     return (
@@ -47,40 +50,41 @@ const List = () => {
                 <Create
                     setShowCreate={setShowCreate}
                     refreshList={getList}
-                    noteToEdit={noteToEdit} 
+                    noteToEdit={noteToEdit}
                 />
             ) : (
                 <>
                     <h1>My Notes</h1>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Content</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {notes.map((note) => (
-                                <tr key={note.id}>
-                                    <td>{note.title}</td>
-                                    <td>{note.content}</td>
-                                    <td>
-                                        <button onClick={() => startEditing(note)}>Edit</button>
-                                        <button onClick={() => deleteNote(note.id)}>Delete</button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <button 
-    onClick={() => {
-        setNoteToEdit(null); 
-        setShowCreate(true);
-    }}
->
-    Create A Note
-</button>
+
+                    <div className='card-container'>
+                        {notes.map((note) => (
+                            <div key={note.id} className='card'>
+                                <div className='header-card'>
+                                    <p className='categorie'>Categorie</p>
+                                    <div className='icons-container'>
+                                        <img className='icons' src={pen} alt=""  onClick={() => startEditing(note)}/> 
+                                        <img className='icons' src={trash} alt=""  onClick={() => deleteNote(note.id)}/>
+                                    </div>
+                                </div>
+                                <div className='body-card'>
+                                    <p>{note.title}</p>
+                                    <p>{note.content}</p>
+                                </div>
+                                <div className='footer-card'>
+                                    <p>Date</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <button
+                        onClick={() => {
+                            setNoteToEdit(null);
+                            setShowCreate(true);
+                        }}
+                    >
+                        Create A Note
+                    </button>
                 </>
             )}
         </div>

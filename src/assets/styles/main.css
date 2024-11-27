@@ -512,6 +512,45 @@ a .uil {
   text-decoration: none;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.card-container .card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.card-container .card .header-card {
+  display: flex;
+  justify-content: space-between;
+}
+.card-container .card .header-card .categorie {
+  font-size: 15px;
+  border-radius: 12px;
+  background-color: bisque;
+  padding: 5px 10px;
+}
+.card-container .card .header-card .icons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.card-container .card .header-card .icons {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+.card-container .card .body-card {
+  text-align: start;
+}
+.card-container .card .footer-card {
+  text-align: end;
+}
+
 html, body {
   margin: 0 !important; /* Remove default margins */
   padding: 0; /* Remove default paddings */
