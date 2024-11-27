@@ -30,6 +30,17 @@ const List = () => {
         setShowCreate(true); 
     };
 
+    const deleteNote = async (id) =>{
+        const token = localStorage.getItem('token');
+        await axios.delete(`https://notes.devlop.tech/api/notes/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        setNotes(notes.filter(note => note.id !== id));
+        
+    }
+
     return (
         <div>
             {showCreate ? (
@@ -56,6 +67,7 @@ const List = () => {
                                     <td>{note.content}</td>
                                     <td>
                                         <button onClick={() => startEditing(note)}>Edit</button>
+                                        <button onClick={() => deleteNote(note.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
