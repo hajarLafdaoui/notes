@@ -23,6 +23,7 @@
   flex-grow: 1;
   max-width: 600px;
   margin: 0 auto;
+  z-index: 2222 !important;
 }
 
 /* Search input */
@@ -99,7 +100,7 @@
 }
 
 /* Add item inside left-side */
-.left-side .add {
+ .add {
   display: flex;
   align-items: center;
   gap: 10px; /* Space between the image and text */
@@ -110,21 +111,21 @@
   transition: all 0.3s ease; /* Smooth hover effects */
 }
 
-.left-side .add p {
+.add p {
   color: #050505;
 }
 
-.left-side .add p:hover {
+.add p:hover {
   color: #c3a645 !important;
 }
 /* Image inside add */
-.left-side .add img {
+.add img {
   width: 20px; /* Adjust size as needed */
   height: 20px;
 }
 
 /* Text inside add */
-.left-side .add p {
+.add p {
   margin: 0;
   font-size: 14px;
   color: #333;

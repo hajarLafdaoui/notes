@@ -1,3 +1,14 @@
+.mainHeader{
+    margin-top: 60px;
+    text-align: start;
+    margin-left: 250px;
+}
+.center{
+    margin: auto;
+    margin-left: 400px;
+    margin-top: 400px;
+
+}
 .card-container {
     margin-left: 230px; /* Push the card container to the right of the left-side section */
     display: flex;
@@ -85,4 +96,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 5px;
+}
+
+.createNote{
+    margin-top: 40px;
+    margin-left: 239px;
 }

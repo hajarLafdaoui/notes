@@ -92,7 +92,7 @@
 }
 
 /* Add item inside left-side */
-.left-side .add {
+.add {
   display: flex;
   align-items: center;
   gap: 10px; /* Space between the image and text */
@@ -101,22 +101,22 @@
   transition: all 0.3s ease; /* Smooth hover effects */
 }
 
-.left-side .add p {
+.add p {
   color: #050505;
 }
 
-.left-side .add p:hover {
+.add p:hover {
   color: #c3a645 !important;
 }
 
 /* Image inside add */
-.left-side .add img {
+.add img {
   width: 20px; /* Adjust size as needed */
   height: 20px;
 }
 
 /* Text inside add */
-.left-side .add p {
+.add p {
   margin: 0;
   font-size: 14px;
   color: #333;
@@ -578,9 +578,21 @@ form.login-form textarea {
   outline: none;
 }
 
-.createUpdateBtns {
+.createUpdate {
   display: flex;
   gap: 10px;
+}
+
+.mainHeader {
+  margin-top: 60px;
+  text-align: start;
+  margin-left: 250px;
+}
+
+.center {
+  margin: auto;
+  margin-left: 400px;
+  margin-top: 400px;
 }
 
 .card-container {
@@ -663,6 +675,11 @@ form.login-form textarea {
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+}
+
+.createNote {
+  margin-top: 40px;
+  margin-left: 239px;
 }
 
 html, body {

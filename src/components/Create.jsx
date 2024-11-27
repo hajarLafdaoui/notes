@@ -21,7 +21,7 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
         const method = noteToEdit ? 'PUT' : 'POST';
 
         try {
-            await axios({
+            const response = await axios({
                 method,
                 url: api,
                 headers: {
@@ -30,15 +30,17 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
                 },
                 data: { title, content, shared_with: noteToEdit?.shared_with || [] },
             });
-
+        
             setMessage(noteToEdit ? 'Note updated!' : 'Note created!');
             setTitle('');
             setContent('');
             refreshList();
             setShowCreate(false);
         } catch (error) {
+            console.log('Error details:', error.response ? error.response.data : error.message);
             setMessage('Failed to save note. Please try again.');
         }
+        
     };
 
     return (
