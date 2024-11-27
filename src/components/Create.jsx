@@ -5,6 +5,7 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
     const [title, setTitle] = useState(noteToEdit ? noteToEdit.title : '');
     const [content, setContent] = useState(noteToEdit ? noteToEdit.content : '');
     const [message, setMessage] = useState('');
+    
 
     const createOrUpdateNote = async (e) => {
         e.preventDefault();
@@ -61,7 +62,7 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         />
-                        <div className='createUpdateBtns'>
+                        <div className='createUpdate'>
                             <button type="submit">
                                 {noteToEdit ? 'Update' : 'Create'}
                             </button>

@@ -575,6 +575,7 @@ form.login-form textarea {
   height: 120px; /* Default height for textarea */
   line-height: 1.5;
   overflow: auto;
+  outline: none;
 }
 
 .createUpdateBtns {
@@ -617,7 +618,8 @@ form.login-form textarea {
 
 .card .header-card .icons-container {
   display: flex;
-  gap: 8px;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .card .header-card .icons {
@@ -632,8 +634,35 @@ form.login-form textarea {
 }
 
 .card .footer-card {
-  margin-top: 10px;
-  text-align: end;
+  margin-top: 20px;
+  text-align: end !important;
+  padding: 0 !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.title {
+  font-size: 24px; /* Adjust the size to your preference */
+  font-weight: bold;
+}
+
+/* Style for the colored point */
+.point {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  text-align: start;
+}
+
+/* Style for the title */
+/* Style for the footer date */
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
 html, body {
