@@ -4,8 +4,8 @@ import axios from 'axios';
 
 
 const Login = ({setIsConected}) => {
-    const [cin, setCin] = useState('')
-    const [password, setPassword] = useState('')
+    const [cin, setCin] = useState('N412108')
+    const [password, setPassword] = useState('123456')
     const [data, setData] = useState({})
     const [response, setResponse] = useState({})
     
