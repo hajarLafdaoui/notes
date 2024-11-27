@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Create from './Create'; // Import Create component
+import Create from './Create'; 
 
 const List = () => {
     const [notes, setNotes] = useState([]);
     const [showCreate, setShowCreate] = useState(false);
-    const [noteToEdit, setNoteToEdit] = useState(null); // Store the note to edit
+    const [noteToEdit, setNoteToEdit] = useState(null);
 
     useEffect(() => {
         getList();
@@ -26,8 +26,8 @@ const List = () => {
     };
 
     const startEditing = (note) => {
-        setNoteToEdit(note); // Set the note to edit
-        setShowCreate(true); // Show Create component for editing
+        setNoteToEdit(note);
+        setShowCreate(true); 
     };
 
     return (
@@ -36,7 +36,7 @@ const List = () => {
                 <Create
                     setShowCreate={setShowCreate}
                     refreshList={getList}
-                    noteToEdit={noteToEdit} // Pass noteToEdit to Create for editing
+                    noteToEdit={noteToEdit} 
                 />
             ) : (
                 <>
@@ -61,7 +61,14 @@ const List = () => {
                             ))}
                         </tbody>
                     </table>
-                    <button onClick={() => setShowCreate(true)}>Create A Note</button>
+                    <button 
+    onClick={() => {
+        setNoteToEdit(null); 
+        setShowCreate(true);
+    }}
+>
+    Create A Note
+</button>
                 </>
             )}
         </div>

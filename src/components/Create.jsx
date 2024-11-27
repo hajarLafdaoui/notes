@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
-    const [title, setTitle] = useState(noteToEdit ? noteToEdit.title : ''); // Prefill title if editing
-    const [content, setContent] = useState(noteToEdit ? noteToEdit.content : ''); // Prefill content if editing
+    const [title, setTitle] = useState(noteToEdit ? noteToEdit.title : ''); 
+    const [content, setContent] = useState(noteToEdit ? noteToEdit.content : ''); 
     const [message, setMessage] = useState('');
 
     const createOrUpdateNote = async (e) => {
@@ -11,58 +11,35 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
     
         if (!title || !content) {
             setMessage('Title and content are required!');
-            return; // Stop further processing if fields are empty
+            return;
         }
     
         const api = noteToEdit 
             ? `https://notes.devlop.tech/api/notes/${noteToEdit.id}` 
             : 'https://notes.devlop.tech/api/notes';
-    
-        const token = localStorage.getItem('token');
-    
-        if (!token) {
-            console.error('No token found in localStorage');
-            setMessage('Authentication failed. Please login again.');
-            return;
-        }
-    
-        const sharedWith = noteToEdit ? noteToEdit.shared_with : []; // Default to empty array if not editing
+        const method = noteToEdit ? 'PUT' : 'POST';
     
         try {
-            const method = noteToEdit ? 'PUT' : 'POST';
-            const response = await axios({
-                method: method,
+            await axios({
+                method,
                 url: api,
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
-                data: { 
-                    title, 
-                    content, 
-                    shared_with: sharedWith,  // Add shared_with field to the request
-                },
+                data: { title, content, shared_with: noteToEdit?.shared_with || [] },
             });
     
-            if (response.status === 200 || response.status === 201) {
-                setMessage(noteToEdit ? 'Note updated successfully!' : 'Note created successfully!');
-                setTitle('');
-                setContent('');
-                refreshList();
-                setShowCreate(false);
-            } else {
-                setMessage(`Error: ${response.data.message || 'Failed to save note.'}`);
-            }
+            setMessage(noteToEdit ? 'Note updated!' : 'Note created!');
+            setTitle('');
+            setContent('');
+            refreshList();
+            setShowCreate(false);
         } catch (error) {
-            console.error('Error details:', error.response || error);
-    
-            if (error.response) {
-                setMessage(`API Error: ${error.response.data.message || 'Unable to save note.'}`);
-            } else {
-                setMessage('Network error: Unable to save note.');
-            }
+            setMessage('Failed to save note. Please try again.');
         }
     };
+    
     
     return (
         <div>
