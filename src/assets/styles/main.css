@@ -560,6 +560,28 @@ a .uil {
   text-decoration: none;
 }
 
+form.login-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  border: none;
+  resize: none; /* Prevent resizing for the textarea */
+}
+
+/* Textarea Specific Styles */
+form.login-form textarea {
+  height: 120px; /* Default height for textarea */
+  line-height: 1.5;
+  overflow: auto;
+}
+
+.createUpdateBtns {
+  display: flex;
+  gap: 10px;
+}
+
 .card-container {
   margin-left: 230px; /* Push the card container to the right of the left-side section */
   display: flex;
@@ -617,6 +639,7 @@ a .uil {
 html, body {
   margin: 0 !important; /* Remove default margins */
   padding: 0; /* Remove default paddings */
+  background-color: #eee;
   box-sizing: border-box; /* Include padding and border in element's dimensions */
   overflow-x: hidden;
 }/*# sourceMappingURL=main.css.map */
