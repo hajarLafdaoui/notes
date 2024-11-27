@@ -1,2 +1,11 @@
 @import 'navbar';
 @import 'dropdown';
+@import 'login';
+
+html, body {
+    margin: 0 !important; /* Remove default margins */
+    padding: 0; /* Remove default paddings */
+    
+    box-sizing: border-box; /* Include padding and border in element's dimensions */
+    overflow-x: hidden;
+  }

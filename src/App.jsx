@@ -14,12 +14,18 @@ function App() {
 
   return (
     <>
-      {/* Displaying FontAwesome Arrow Down icon */}
-$
+      {/* Displaying FontAwesome Arrow Down icon */} 
+      {/* <Navbar /> */}
       {/* Conditional rendering for Login or List components */}
-      {/* {!isConcted ? <Login setIsConected={setIsConected} /> : <List />} */}
+      {!isConcted ?
+       <Login setIsConected={setIsConected} /> 
+       :
+       <>
+        <Navbar />
+        <List />
+       </>
 
-      <Navbar />
+      }
     </>
   );
 }
