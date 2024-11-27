@@ -75,6 +75,54 @@
     margin: 0 !important;
   }
 }
+/* Left-side container */
+.left-side {
+  position: fixed; /* Fix the left side */
+  top: 60px; /* Adjust to avoid navbar */
+  left: 0px; /* Space from the edge */
+  width: 200px; /* Fixed width for the left section */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #ffeba7; /* Background color */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Add item inside left-side */
+.left-side .add {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the image and text */
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+.left-side .add p {
+  color: #050505;
+}
+
+.left-side .add p:hover {
+  color: #c3a645 !important;
+}
+
+/* Image inside add */
+.left-side .add img {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+}
+
+/* Text inside add */
+.left-side .add p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500; /* Slightly bolder text */
+}
+
 .sec-center {
   position: relative;
   width: 190px;
@@ -513,41 +561,56 @@ a .uil {
 }
 
 .card-container {
+  margin-left: 230px; /* Push the card container to the right of the left-side section */
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+  padding: 20px;
+  width: calc(100% - 230px); /* Account for left-side width */
 }
-.card-container .card {
+
+/* Card styling */
+.card {
   display: flex;
   flex-direction: column;
   width: 400px;
   background-color: #fff;
   border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
 }
-.card-container .card .header-card {
+
+.card .header-card {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.card-container .card .header-card .categorie {
+
+.card .header-card .categorie {
   font-size: 15px;
   border-radius: 12px;
   background-color: bisque;
   padding: 5px 10px;
 }
-.card-container .card .header-card .icons-container {
+
+.card .header-card .icons-container {
   display: flex;
-  justify-content: space-between;
   gap: 8px;
 }
-.card-container .card .header-card .icons {
+
+.card .header-card .icons {
   width: 22px;
   height: 22px;
   cursor: pointer;
 }
-.card-container .card .body-card {
+
+.card .body-card {
+  margin-top: 10px;
   text-align: start;
 }
-.card-container .card .footer-card {
+
+.card .footer-card {
+  margin-top: 10px;
   text-align: end;
 }
 

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowRight, faPlus, faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import add from '../assets/images/add.png';
+import trash from '../assets/images/trash.png';
+import folder from '../assets/images/folder.png';
+
 
 const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -43,7 +47,7 @@ const Navbar = () => {
                                 onChange={toggleDropdown}
                             />
                             <label className="for-dropdown" htmlFor="dropdown">
-                                <FontAwesomeIcon icon={dropdownOpen ? faTimes : faBars}  />
+                                <FontAwesomeIcon icon={dropdownOpen ? faTimes : faBars} />
                             </label>
                             <div className={`section-dropdown ${dropdownOpen ? 'show' : ''}`}>
                                 <input
@@ -68,6 +72,22 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            {/*  */}
+            <div className="left-side">
+            <div className="add">
+                    <img src={folder} alt="Add Icon" />
+                    <p>All Notes</p>
+                </div>
+                <div className="add">
+                    <img src={add} alt="Add Icon" />
+                    <p>Add New</p>
+                </div>
+                <div className="add">
+                    <img src={trash} alt="Trash Icon" />
+                    <p>Trash</p>
+                </div>
+            </div>
+
         </>
     );
 };

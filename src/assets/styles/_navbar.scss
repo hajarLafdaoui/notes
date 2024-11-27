@@ -80,3 +80,53 @@
   
  
 }
+// 
+/* Left-side container */
+.left-side {
+  position: fixed; /* Fix the left side */
+  top: 60px; /* Adjust to avoid navbar */
+  left: 0px; /* Space from the edge */
+  width: 200px; /* Fixed width for the left section */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+  background-color: #ffeba7; /* Background color */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Add item inside left-side */
+.left-side .add {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the image and text */
+  padding: 10px;
+
+
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+.left-side .add p {
+  color: #050505;
+}
+
+.left-side .add p:hover {
+  color: #c3a645 !important;
+}
+/* Image inside add */
+.left-side .add img {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+}
+
+/* Text inside add */
+.left-side .add p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500; /* Slightly bolder text */
+}

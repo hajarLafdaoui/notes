@@ -1,40 +1,53 @@
-.card-container{
+.card-container {
+    margin-left: 230px; /* Push the card container to the right of the left-side section */
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    .card{
-        display: flex;
-        flex-direction: column;
-        width: 400px;
-        background-color: #fff;
-        border-radius: 20px;
-        .header-card{
-            display: flex;
-            justify-content: space-between;
-            .categorie{
-                font-size: 15px;
-                border-radius: 12px;
-                background-color: bisque;
-                padding: 5px 10px;
-            }
-            .icons-container{
-                display: flex;
-                justify-content: space-between;
-                gap: 8px;
-                
-            }
-
-            .icons{
-                width: 22px;
-                height: 22px;
-                cursor: pointer;
-            }
-        }
-        .body-card{
-            text-align: start;
-        }
-        .footer-card{
-            text-align: end;
-        }
-    }
-}
+    gap: 20px;
+    padding: 20px;
+    width: calc(100% - 230px); /* Account for left-side width */
+  }
+  
+  /* Card styling */
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+  
+  .card .header-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card .header-card .categorie {
+    font-size: 15px;
+    border-radius: 12px;
+    background-color: bisque;
+    padding: 5px 10px;
+  }
+  
+  .card .header-card .icons-container {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .card .header-card .icons {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+  }
+  
+  .card .body-card {
+    margin-top: 10px;
+    text-align: start;
+  }
+  
+  .card .footer-card {
+    margin-top: 10px;
+    text-align: end;
+  }
