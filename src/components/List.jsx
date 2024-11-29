@@ -5,7 +5,7 @@ import pen from '../assets/images/pen.png';
 import trash from '../assets/images/trash.png';
 import add from '../assets/images/add.png';
 
-const List = ({ searchQuery, setSearchQuery }) => {
+const List = ({ searchQuery }) => {
   const [notes, setNotes] = useState([]);
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [showCreate, setShowCreate] = useState(false);
@@ -36,9 +36,11 @@ const List = ({ searchQuery, setSearchQuery }) => {
       setNotes(response.data);
       setFilteredNotes(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching notes:", error);
+      // You can show an error message to the user if needed
     }
   };
+  
 
   const startEditing = (note) => {
     setNoteToEdit(note);

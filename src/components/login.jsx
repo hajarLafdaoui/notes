@@ -5,41 +5,38 @@ const Login = ({ setIsConected }) => {
   const [cin, setCin] = useState("N412108");
   const [password, setPassword] = useState("123456");
   const [data, setData] = useState({});
-  const [response, setResponse] = useState({});
 
   const StoreData = async () => {
     const newData = { cin, password };
-
     try {
       const resp = await axios.post("https://notes.devlop.tech/api/login", {
         cin,
         password,
       });
-      setResponse(resp);
-      localStorage.setItem("token", resp.data.token);
-
-      if (resp.status === 200) {
+  
+      console.log("Full Response:", resp); // Log the entire response
+  
+      // Check for the token directly on the response object
+      if (resp.token) {
+        localStorage.setItem("token", resp.token);
         setData(newData);
         localStorage.setItem("data", JSON.stringify(newData));
         setIsConected(true);
       } else {
-        console.error("Login failed");
+        console.error("Login failed, token not returned:", resp);
       }
     } catch (error) {
       console.error("Error during login:", error);
     }
   };
+  
 
-  const logout = () => {
-    localStorage.removeItem("data");
-    setData({});
-    setIsConected(false);
-  };
 
   return (
-    <div className="login-page-wrapper">
+    <div className="login-page-wrapper yellow">
       <div className="login-page">
         <div className="form">
+        <h2 className="loginTitle">Login</h2>
           {!data.cin ? (
             <form
               className="login-form"
@@ -64,9 +61,6 @@ const Login = ({ setIsConected }) => {
             </form>
           ) : (
             <div>
-              <p>CIN: {data.cin}</p>
-              <p>First Name: {response.data?.user?.first_name}</p>
-              <button onClick={logout}>Logout</button>
             </div>
           )}
         </div>

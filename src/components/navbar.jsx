@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowRight, faPlus, faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faPlus, faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import add from '../assets/images/add.png';
 import trash from '../assets/images/trash.png';
 import folder from '../assets/images/folder.png';
 
-const Navbar = ({ setView, setShowCreate, setSearchQuery, setIsConected }) => {
+const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [subDropdownOpen, setSubDropdownOpen] = useState(false);
 
@@ -17,12 +17,10 @@ const Navbar = ({ setView, setShowCreate, setSearchQuery, setIsConected }) => {
     setSubDropdownOpen(!subDropdownOpen);
   };
 
-  // Logout function
   const logout = () => {
-    // Remove user data from localStorage
     localStorage.removeItem("data");
     localStorage.removeItem("token");
-    setIsConected(false); // Update login state to false
+    setIsConected(false);
   };
 
   return (
@@ -38,7 +36,7 @@ const Navbar = ({ setView, setShowCreate, setSearchQuery, setIsConected }) => {
               <input
                 className="form-control search-input"
                 type="search"
-                placeholder="Search"
+                placeholder="Search for title"
                 aria-label="Search"
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -86,6 +84,10 @@ const Navbar = ({ setView, setShowCreate, setSearchQuery, setIsConected }) => {
         <div className="add" onClick={() => setView('allNotes')}>
           <img src={folder} alt="Folder Icon" />
           <p>All Notes</p>
+        </div>
+        <div className="add" onClick={() => setView('create')}>
+          <img src={add} alt="Add Icon" />
+          <p>Create Note</p>
         </div>
         <div className="add">
           <img src={trash} alt="Trash Icon" />

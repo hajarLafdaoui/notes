@@ -1,12 +1,14 @@
 
   
   .login-page-wrapper {
-    background-color: #ffeba7; /* Apply background only for this component */
-    height: 550px; /* Ensure it covers the full viewport height */
-    width: 1200PX; /* Ensure it covers the full viewport width */
+    height: 100vh; 
+    width: 100vw; 
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .yellow{
+    background-color: #ffeba7; 
   }
   
   .login-page {
@@ -89,4 +91,7 @@ form.login-form textarea {
 .createUpdate{
   display: flex;
   gap: 10px;
+}
+.loginTitle{
+  margin-bottom: 32px !important;
 }
