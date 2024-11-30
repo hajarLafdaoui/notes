@@ -14,47 +14,44 @@ const List = ({ searchQuery }) => {
   const colors = ["#ffc2d1", "#e7c6ff", "#a3b18a", "#d4a373", "#c9ada7", "#9a8c98", "#ffe5d9"];
 
   useEffect(() => {
-    getList();
+    fetchNotes();
   }, []);
 
   useEffect(() => {
+    filterNotes();
+  }, [searchQuery, notes]);
+
+  const fetchNotes = async () => {
+    try {
+      const response = await axios.get('/notes');
+      setNotes(response);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+      setNotes([]); // Set to empty array to avoid map error
+    }
+  };
+
+  const filterNotes = () => {
     if (searchQuery) {
-      setFilteredNotes(notes.filter(note => note.title.toLowerCase().includes(searchQuery.toLowerCase())));
+      const lowerCaseQuery = searchQuery.toLowerCase();
+      setFilteredNotes(notes.filter(note => note.title.toLowerCase().includes(lowerCaseQuery)));
     } else {
       setFilteredNotes(notes);
     }
-  }, [searchQuery, notes]);
+  };
 
-  const getList = async () => {
+  const handleDelete = async (id) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.get("https://notes.devlop.tech/api/notes", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setNotes(response.data);
-      setFilteredNotes(response.data);
+      await axios.delete(`/notes/${id}`);
+      setNotes(notes.filter(note => note.id !== id));
     } catch (error) {
-      console.error("Error fetching notes:", error);
-      // You can show an error message to the user if needed
+      console.error("Error deleting note:", error);
     }
   };
-  
 
-  const startEditing = (note) => {
+  const handleEdit = (note) => {
     setNoteToEdit(note);
     setShowCreate(true);
-  };
-
-  const deleteNote = async (id) => {
-    const token = localStorage.getItem('token');
-    await axios.delete(`https://notes.devlop.tech/api/notes/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setNotes(notes.filter(note => note.id !== id));
   };
 
   const formatDate = (dateString) => {
@@ -62,44 +59,60 @@ const List = ({ searchQuery }) => {
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
+  const handleCreateNew = () => {
+    setNoteToEdit(null);
+    setShowCreate(true);
+  };
+
   return (
     <div>
       {showCreate ? (
-        <Create setShowCreate={setShowCreate} refreshList={getList} noteToEdit={noteToEdit} />
+        <Create setShowCreate={setShowCreate} refreshList={fetchNotes} noteToEdit={noteToEdit} />
       ) : (
         <>
           <h1 className='mainHeader'>My Notes</h1>
 
-          <div className="add createNote" onClick={() => {
-            setNoteToEdit(null);
-            setShowCreate(true);
-          }}>
+          <div className="add createNote" onClick={handleCreateNew}>
             <img src={add} alt="Add Icon" />
             <p>Create New</p>
           </div>
 
           <div className='card-container'>
-            {filteredNotes.map((note, index) => (
-              <div key={note.id} className='card'>
-                <div className='header-card'>
-                  <div className='sub-header'>
-                    <div className="point" style={{ backgroundColor: colors[index % colors.length] }}></div>
-                    <p className="title">{note.title}</p>
-                  </div>
+            {filteredNotes && filteredNotes.length > 0 ? (
+              filteredNotes.map((note, index) => (
+                <div key={note.id} className='card'>
+                  <div className='header-card'>
+                    <div className='sub-header'>
+                      <div className="point" style={{ backgroundColor: colors[index % colors.length] }}></div>
+                      <p className="title">{note.title}</p>
+                    </div>
 
-                  <div className='icons-container'>
-                    <img className='icons' src={pen} alt="" onClick={() => startEditing(note)} />
-                    <img className='icons' src={trash} alt="" onClick={() => deleteNote(note.id)} />
+                    <div className='icons-container'>
+                      <img
+                        className='icons'
+                        src={pen}
+                        alt="Edit"
+                        onClick={() => handleEdit(note)}
+                      />
+                      <img
+                        className='icons'
+                        src={trash}
+                        alt="Delete"
+                        onClick={() => handleDelete(note.id)}
+                      />
+                    </div>
                   </div>
+                  <div className='body-card'>
+                    <p>{note.content}</p>
+                  </div>
+                  <p className='footer-card' style={{ backgroundColor: colors[index % colors.length] }}>
+                    {formatDate(note.date)}
+                  </p>
                 </div>
-                <div className='body-card'>
-                  <p>{note.content}</p>
-                </div>
-                <p className='footer-card' style={{ backgroundColor: colors[index % colors.length] }}>
-                  {formatDate(note.date)}
-                </p>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No notes found.</p>
+            )}
           </div>
         </>
       )}
