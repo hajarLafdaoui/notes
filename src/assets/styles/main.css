@@ -18,6 +18,7 @@
 }
 
 /* Search container - mobile-specific positioning */
+/* Ensure the search input has enough space */
 .search-container {
   position: relative;
   flex-grow: 1;
@@ -26,6 +27,12 @@
   z-index: 2222 !important;
 }
 
+/* Fix issue with the search input being overlapped */
+@media (max-width: 767px) {
+  .search-container {
+    z-index: 999; /* Ensure search input stays above other elements */
+  }
+}
 /* Search input */
 /* Search input */
 .search-input {
@@ -67,20 +74,15 @@
   color: #ffeba7;
 }
 
-/* Media Query for Mobile (Hamburger + Search inside dropdown) */
-@media (max-width: 767px) {
-  .search-container {
-    margin: 0 !important;
-  }
-  .navbar-brand {
-    margin: 0 !important;
-  }
+.leftItems {
+  display: none;
 }
+
 /* Left-side container */
 .left-side {
-  position: fixed; /* Fix the left side */
+  position: fixed; /* Fixed positioning for desktop */
   top: 60px; /* Adjust to avoid navbar */
-  left: 0px; /* Space from the edge */
+  left: 0; /* Space from the left edge */
   width: 200px; /* Fixed width for the left section */
   height: 100vh;
   display: flex;
@@ -90,8 +92,60 @@
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensure it stays on top */
+  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
 }
 
+/* Media Query for Mobile */
+@media (max-width: 767px) {
+  /* Hide left-side and ensure it doesn't take up space */
+  .left-side {
+    width: 0; /* Collapse width to 0 */
+    display: none; /* Completely remove it from the layout */
+    left: -200px; /* Move it off-screen */
+    padding: 0; /* Remove padding to save space */
+  }
+  .leftItems {
+    display: block; /* Show left items (dropdown on mobile) */
+  }
+}
+/* Left-side container */
+.left-side {
+  position: fixed; /* Fixed positioning for desktop */
+  top: 60px; /* Adjust to avoid navbar */
+  left: 0; /* Space from the left edge */
+  width: 200px; /* Fixed width for the left section */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #ffeba7; /* Background color */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+}
+
+/* Med/* Media Query for Mobile */
+@media (max-width: 767px) {
+  /* Hide left-side and ensure it doesn't take up space */
+  .left-side {
+    display: none; /* Completely remove it from the layout */
+    position: absolute; /* Ensure it's off the screen completely */
+    width: 0 !important; /* Collapse width to 0 */
+    height: 0 !important; /* Set height to 0 */
+    padding: 0 !important; /* Remove padding to save space */
+    margin: 0 !important; /* Remove margin to save space */
+    visibility: hidden !important; /* Ensure it is not visible */
+  }
+  /* Apply overflow hidden to the parent container */
+  .parent-container { /* Replace with your actual parent class */
+    overflow: hidden; /* Prevent any overflow */
+  }
+  /* Display mobile-specific items */
+  .leftItems {
+    display: block; /* Show left items (dropdown on mobile) */
+  }
+}
 /* Add item inside left-side */
 .add {
   display: flex;
@@ -616,7 +670,7 @@ form.login-form textarea {
 .card {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 400px; /* Fixed width for cards */
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -676,8 +730,6 @@ form.login-form textarea {
   text-align: start;
 }
 
-/* Style for the title */
-/* Style for the footer date */
 .sub-header {
   display: flex;
   justify-content: space-between;
@@ -690,6 +742,32 @@ form.login-form textarea {
   margin-left: 239px;
 }
 
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .mainHeader {
+    margin-left: 10px;
+    margin-top: 70px;
+    margin-bottom: 0; /* Remove left margin on mobile */
+  }
+  .createNote {
+    margin-left: 10px; /* Remove left margin on mobile */
+  }
+  .card-container {
+    width: 100% !important; /* Full width on mobile */
+    padding: 10px; /* Adjust padding for mobile */
+    margin-left: 0; /* Remove left margin */
+    margin-right: 0;
+    gap: 5px; /* Remove right margin */
+  }
+  .card {
+    width: 100%; /* Full width for cards on mobile */
+    margin: 10px 0; /* Margin for spacing between cards */
+  }
+  /* Hide left-side navigation */
+  .left-side {
+    display: none; /* Hide left-side navigation on mobile */
+  }
+}
 html, body {
   margin: 0 !important; /* Remove default margins */
   padding: 0; /* Remove default paddings */

@@ -23,6 +23,7 @@ const List = ({ searchQuery }) => {
 
   const fetchNotes = async () => {
     try {
+    // This will automatically use the base URL, so it becomes: https://notes.devlop.tech/api/notes
       const response = await axios.get('/notes');
       setNotes(response);
     } catch (error) {
@@ -65,7 +66,7 @@ const List = ({ searchQuery }) => {
   };
 
   return (
-    <div>
+    <div className='mainListContainer'>
       {showCreate ? (
         <Create setShowCreate={setShowCreate} refreshList={fetchNotes} noteToEdit={noteToEdit} />
       ) : (

@@ -1,104 +1,126 @@
-.mainHeader{
-    margin-top: 60px;
-    text-align: start;
-    margin-left: 250px;
+.mainHeader {
+  margin-top: 60px;
+  text-align: start;
+  margin-left: 250px;
 }
-.center{
-    margin: auto;
-    margin-left: 400px;
-    margin-top: 400px;
 
+.center {
+  margin: auto;
+  margin-left: 400px;
+  margin-top: 400px;
 }
+
 .card-container {
-    margin-left: 230px; /* Push the card container to the right of the left-side section */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    width: calc(100% - 230px); /* Account for left-side width */
-  }
-  
-  /* Card styling */
-  .card {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-  }
-  
-  .card .header-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .card .header-card .categorie {
-    font-size: 15px;
-    border-radius: 12px;
-    background-color: bisque;
-    padding: 5px 10px;
-  }
-  
-  .card .header-card .icons-container {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .card .header-card .icons {
-    width: 22px;
-    height: 22px;
-    cursor: pointer;
-  }
-  
-  .card .body-card {
-    margin-top: 10px;
-    text-align: start;
-  }
-  
-  .card .footer-card {
-    margin-top: 20px;
-    text-align: end !important;
-    padding: 0 !important;
-    width: fit-content;
-    align-self: flex-end;
-    // border-radius: 5px;
-  }
-  .title {
-    font-size: 24px; /* Adjust the size to your preference */
-    font-weight: bold;
+  margin-left: 230px; /* Push the card container to the right of the left-side section */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: calc(100% - 230px); /* Account for left-side width */
 }
+
+/* Card styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px; /* Fixed width for cards */
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.card .header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .header-card .categorie {
+  font-size: 15px;
+  border-radius: 12px;
+  background-color: bisque;
+  padding: 5px 10px;
+}
+
+.card .header-card .icons-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.card .header-card .icons {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.card .body-card {
+  margin-top: 10px;
+  text-align: start;
+}
+
+.card .footer-card {
+  margin-top: 20px;
+  text-align: end !important;
+  padding: 0 !important;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.title {
+  font-size: 24px; /* Adjust the size to your preference */
+  font-weight: bold;
+}
+
 /* Style for the colored point */
 .point {
-    width: 10px;
-    height: 10px;
-    margin-bottom: 5px;
-    border-radius: 50%;
-    // margin-right: 10px;
-    // display: inline-block;
-    text-align: start;
-
+  width: 10px;
+  height: 10px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  text-align: start;
 }
 
-/* Style for the title */
-
-
-/* Style for the footer date */
-.footer-card {
-
-    
-}
-.sub-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
+.sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
-.createNote{
-    margin-top: 40px;
-    margin-left: 239px;
+.createNote {
+  margin-top: 40px;
+  margin-left: 239px;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .mainHeader {
+      margin-left: 10px;
+      margin-top: 70px; 
+      margin-bottom: 0;/* Remove left margin on mobile */
+  }
+  .createNote{
+    margin-left: 10px; /* Remove left margin on mobile */
+
+  }
+
+  .card-container {
+      width: 100% !important; /* Full width on mobile */
+      padding: 10px; /* Adjust padding for mobile */
+      margin-left: 0; /* Remove left margin */
+      margin-right: 0;
+      gap: 5px; /* Remove right margin */
+  }
+
+  .card {
+      width: 100%; /* Full width for cards on mobile */
+      margin: 10px 0; /* Margin for spacing between cards */
+  }
+
+  /* Hide left-side navigation */
+  .left-side {
+      display: none; /* Hide left-side navigation on mobile */
+  }
 }

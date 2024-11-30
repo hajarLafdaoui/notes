@@ -18,6 +18,7 @@
 }
 
 /* Search container - mobile-specific positioning */
+/* Ensure the search input has enough space */
 .search-container {
   position: relative;
   flex-grow: 1;
@@ -25,6 +26,14 @@
   margin: 0 auto;
   z-index: 2222 !important;
 }
+
+/* Fix issue with the search input being overlapped */
+@media (max-width: 767px) {
+  .search-container {
+    z-index: 999; /* Ensure search input stays above other elements */
+  }
+}
+
 
 /* Search input */
 /* Search input */
@@ -68,35 +77,79 @@
 }
 
 
-
-
-/* Media Query for Mobile (Hamburger + Search inside dropdown) */
-@media (max-width: 767px) {
-  .search-container {
-    margin: 0 !important;
-  }
-  .navbar-brand{
-    margin: 0 !important;
-  }
-  
- 
+.leftItems{
+  display: none;
 }
-// 
 /* Left-side container */
 .left-side {
-  position: fixed; /* Fix the left side */
+  position: fixed; /* Fixed positioning for desktop */
   top: 60px; /* Adjust to avoid navbar */
-  left: 0px; /* Space from the edge */
+  left: 0; /* Space from the left edge */
   width: 200px; /* Fixed width for the left section */
   height: 100vh;
   display: flex;
   flex-direction: column;
-
   gap: 15px;
   background-color: #ffeba7; /* Background color */
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* Ensure it stays on top */
+  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+}
+
+/* Media Query for Mobile */
+@media (max-width: 767px) {
+  /* Hide left-side and ensure it doesn't take up space */
+  .left-side {
+    width: 0; /* Collapse width to 0 */
+    display: none; /* Completely remove it from the layout */
+    left: -200px; /* Move it off-screen */
+    padding: 0; /* Remove padding to save space */
+  }
+
+  .leftItems {
+    display: block; /* Show left items (dropdown on mobile) */
+  }
+}
+/* Left-side container */
+.left-side {
+  position: fixed; /* Fixed positioning for desktop */
+  top: 60px; /* Adjust to avoid navbar */
+  left: 0; /* Space from the left edge */
+  width: 200px; /* Fixed width for the left section */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #ffeba7; /* Background color */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+}
+
+/* Med/* Media Query for Mobile */
+@media (max-width: 767px) {
+  /* Hide left-side and ensure it doesn't take up space */
+  .left-side {
+    display: none; /* Completely remove it from the layout */
+    position: absolute; /* Ensure it's off the screen completely */
+    width: 0 !important; /* Collapse width to 0 */
+    height: 0 !important; /* Set height to 0 */
+    padding: 0 !important; /* Remove padding to save space */
+    margin: 0 !important; /* Remove margin to save space */
+    visibility: hidden !important; /* Ensure it is not visible */
+  }
+
+  /* Apply overflow hidden to the parent container */
+  .parent-container { /* Replace with your actual parent class */
+    overflow: hidden; /* Prevent any overflow */
+  }
+
+  /* Display mobile-specific items */
+  .leftItems {
+    display: block; /* Show left items (dropdown on mobile) */
+  }
 }
 
 /* Add item inside left-side */
@@ -131,3 +184,16 @@
   color: #333;
   font-weight: 500; /* Slightly bolder text */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// 

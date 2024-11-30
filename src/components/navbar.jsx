@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faPlus, faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import add from '../assets/images/add.png';
@@ -8,6 +8,7 @@ import folder from '../assets/images/folder.png';
 const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [subDropdownOpen, setSubDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null); // Reference for the dropdown
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -22,6 +23,21 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
     localStorage.removeItem("token");
     setIsConected(false);
   };
+
+  // Close dropdown if clicking outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +59,7 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
               <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
             </div>
 
-            <div className="sec-center p-0 m-0">
+            <div className="sec-center p-0 m-0" ref={dropdownRef}> {/* Add ref to dropdown container */}
               <input
                 className="dropdown"
                 type="checkbox"
@@ -73,6 +89,11 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
                   <a href="#">Update Password <FontAwesomeIcon icon={faArrowRight} /></a>
                 </div>
                 <a href="#" onClick={logout}>Logout <FontAwesomeIcon icon={faArrowRight} /></a>
+                <div className="leftItems">
+                  <a href="#" onClick={() => setView('allNotes')}>All Notes <FontAwesomeIcon icon={faArrowRight} /></a>
+                  <a href="#" onClick={() => setView('create')}>Create Note <FontAwesomeIcon icon={faArrowRight} /></a>
+                  <a href="#">Trash <FontAwesomeIcon icon={faArrowRight} /></a>
+                </div>
               </div>
             </div>
           </div>
