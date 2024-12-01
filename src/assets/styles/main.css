@@ -27,10 +27,17 @@
   z-index: 2222 !important;
 }
 
+.MOBILE {
+  display: none;
+}
+
 /* Fix issue with the search input being overlapped */
 @media (max-width: 767px) {
   .search-container {
-    z-index: 999; /* Ensure search input stays above other elements */
+    display: none !important;
+  }
+  .MOBILE {
+    display: block;
   }
 }
 /* Search input */
@@ -187,7 +194,8 @@
 [type=checkbox]:checked,
 [type=checkbox]:not(:checked) {
   position: absolute;
-  left: -9999px;
+  width: 0; /* Eliminate extra clickable space */
+  height: 0;
   opacity: 0;
   pointer-events: none;
 }
@@ -198,7 +206,9 @@
   top: 40px;
   right: 40px;
   z-index: 20000;
-  display: block;
+  display: flex; /* Make it only occupy the size of the visible element */
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   width: 46px;
   height: 46px;
@@ -230,6 +240,11 @@
   background-position: center;
   transition: all 200ms linear;
   opacity: 0;
+}
+
+.pl-5 {
+  padding-left: 5.25rem;
+  margin: 0 !important;
 }
 
 .dark-light:checked + label:after {
@@ -312,6 +327,7 @@
   background-color: #102770;
   color: #ffeba7;
   box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
+  border: 1px solid black !important;
 }
 
 .dropdown:checked + label:before,
@@ -646,7 +662,7 @@ form.login-form textarea {
 }
 
 .mainHeader {
-  margin-top: 60px;
+  margin-top: 70px;
   text-align: start;
   margin-left: 250px;
 }
@@ -745,12 +761,13 @@ form.login-form textarea {
 /* Responsive Styles */
 @media (max-width: 767px) {
   .mainHeader {
-    margin-left: 10px;
+    margin-left: 30px;
     margin-top: 70px;
-    margin-bottom: 0; /* Remove left margin on mobile */
+    margin-bottom: 0 !important; /* Remove left margin on mobile */
   }
   .createNote {
-    margin-left: 10px; /* Remove left margin on mobile */
+    margin-left: 22px; /* Remove left margin on mobile */
+    margin-top: 20px;
   }
   .card-container {
     width: 100% !important; /* Full width on mobile */

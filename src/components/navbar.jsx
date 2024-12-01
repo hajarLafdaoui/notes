@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faPlus, faTimes, faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faPlus, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import add from '../assets/images/add.png';
 import trash from '../assets/images/trash.png';
 import folder from '../assets/images/folder.png';
+import Search from './Search';  // Import the Search component
 
 const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,19 +46,11 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
         <div className="container-fluid">
           <div className="d-flex justify-content-between w-100">
             <div className="d-flex align-items-center logo-container">
-              <a className="navbar-brand ms-3" href="#">MindPad</a>
+              <a className="navbar-brand" href="#">MindPad</a>
             </div>
 
-            <div className="mx-3 d-flex align-items-center search-container">
-              <input
-                className="form-control search-input"
-                type="search"
-                placeholder="Search for title"
-                aria-label="Search"
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
-            </div>
+            {/* Use the Search component here */}
+            <Search setSearchQuery={setSearchQuery} />
 
             <div className="sec-center p-0 m-0" ref={dropdownRef}> {/* Add ref to dropdown container */}
               <input
@@ -71,6 +64,7 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
               <label className="for-dropdown" htmlFor="dropdown">
                 <FontAwesomeIcon icon={dropdownOpen ? faTimes : faBars} />
               </label>
+
               <div className={`section-dropdown ${dropdownOpen ? 'show' : ''}`}>
                 <input
                   className="dropdown-sub"

@@ -71,6 +71,7 @@ const List = ({ searchQuery }) => {
         <Create setShowCreate={setShowCreate} refreshList={fetchNotes} noteToEdit={noteToEdit} />
       ) : (
         <>
+        
           <h1 className='mainHeader'>My Notes</h1>
 
           <div className="add createNote" onClick={handleCreateNew}>

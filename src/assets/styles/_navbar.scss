@@ -26,12 +26,19 @@
   margin: 0 auto;
   z-index: 2222 !important;
 }
+.MOBILE{
+  display: none;
+}
 
 /* Fix issue with the search input being overlapped */
 @media (max-width: 767px) {
   .search-container {
-    z-index: 999; /* Ensure search input stays above other elements */
+    display: none !important;
   }
+  .MOBILE{
+    display: block;
+  }
+  
 }
 
 

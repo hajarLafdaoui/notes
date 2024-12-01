@@ -9,7 +9,7 @@ const Login = ({ setIsConected }) => {
   const StoreData = async () => {
     const newData = { cin, password };
     try {
-      const resp = await axios.post("https://notes.devlop.tech/api/login", {
+      const resp = await axios.post("/login", {
         cin,
         password,
       });
