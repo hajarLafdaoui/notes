@@ -5,11 +5,12 @@ import add from '../assets/images/add.png';
 import trash from '../assets/images/trash.png';
 import folder from '../assets/images/folder.png';
 import Search from './Search';  // Import the Search component
+import UpdatePassword from './UpdatePassword';
 
 const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [subDropdownOpen, setSubDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null); // Reference for the dropdown
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -48,11 +49,9 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
             <div className="d-flex align-items-center logo-container">
               <a className="navbar-brand" href="#">MindPad</a>
             </div>
-
             {/* Use the Search component here */}
             <Search setSearchQuery={setSearchQuery} />
-
-            <div className="sec-center p-0 m-0" ref={dropdownRef}> {/* Add ref to dropdown container */}
+            <div className="sec-center p-0 m-0" ref={dropdownRef}>
               <input
                 className="dropdown"
                 type="checkbox"
@@ -64,7 +63,6 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
               <label className="for-dropdown" htmlFor="dropdown">
                 <FontAwesomeIcon icon={dropdownOpen ? faTimes : faBars} />
               </label>
-
               <div className={`section-dropdown ${dropdownOpen ? 'show' : ''}`}>
                 <input
                   className="dropdown-sub"
@@ -80,7 +78,7 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
                 </label>
                 <div className={`section-dropdown-sub ${subDropdownOpen ? 'show' : ''}`}>
                   <a href="#">See Profile <FontAwesomeIcon icon={faArrowRight} /></a>
-                  <a href="#">Update Password <FontAwesomeIcon icon={faArrowRight} /></a>
+                  <a href="#" onClick={() => setView('updatePassword')}>Update Password <FontAwesomeIcon icon={faArrowRight} /></a>
                 </div>
                 <a href="#" onClick={logout}>Logout <FontAwesomeIcon icon={faArrowRight} /></a>
                 <div className="leftItems">

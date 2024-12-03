@@ -8,6 +8,7 @@ import Create from './components/Create.jsx';
 
 // Import Axios Setup to apply global configurations
 import './components/axiosSetup'; 
+import UpdatePassword from './components/UpdatePassword.jsx';
 
 function App() {
   const [isConected, setIsConected] = useState(false); 
@@ -23,6 +24,9 @@ function App() {
           <Navbar setView={setView} setSearchQuery={setSearchQuery} setIsConected={setIsConected} />
           {view === 'allNotes' && <List searchQuery={searchQuery} />}
           {view === 'create' && <Create />} 
+            {view === 'updatePassword' && <UpdatePassword />}
+    {/* {view === 'allNotes' && <AllNotes />} */}
+    {/* {view === 'create' && <CreateNote />} */}
         </>
       )}
     </>

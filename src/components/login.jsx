@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Login = ({ setIsConected }) => {
-  const [cin, setCin] = useState("N412108");
-  const [password, setPassword] = useState("123456");
+  const [cin, setCin] = useState("JD98624");
+  const [password, setPassword] = useState("7890100");
   const [data, setData] = useState({});
 
   const StoreData = async () => {
