@@ -655,6 +655,7 @@ form.login-form textarea {
 .createUpdate {
   display: flex;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .loginTitle {
@@ -791,4 +792,34 @@ html, body {
   background-color: #eee;
   box-sizing: border-box; /* Include padding and border in element's dimensions */
   overflow-x: hidden;
+}
+
+select {
+  width: 100%; /* Full width for consistency */
+  padding: 10px; /* Add padding for a better click area */
+  font-size: 16px; /* Match text size with other inputs */
+  border: 1px solid #ccc; /* Subtle border for definition */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+  color: #333; /* Dark text for readability */
+  outline: none; /* Remove default focus outline */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth focus effect */
+}
+
+select:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+  background-color: #fff; /* Slightly brighter background */
+}
+
+select option {
+  background-color: #fff; /* Ensure options have a white background */
+  color: #121111 !important; /* Consistent text color for options */
+}
+
+/* Optional: Style for disabled select */
+select:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
 }/*# sourceMappingURL=main.css.map */

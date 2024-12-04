@@ -8,6 +8,7 @@ import Create from './components/Create.jsx';
 
 // Import Axios Setup to apply global configurations
 import './components/axiosSetup'; 
+
 import UpdatePassword from './components/UpdatePassword.jsx';
 
 function App() {

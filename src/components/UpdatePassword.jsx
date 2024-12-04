@@ -5,8 +5,7 @@ const UpdatePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-//   const [showForm, setShowForm] = useState(false); // To manage form visibility
-//   alert('your in')
+
 
   const handleUpdatePassword = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {

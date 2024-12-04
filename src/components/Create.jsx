@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Select from 'react-select';
 
 const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
   const [title, setTitle] = useState(noteToEdit?.title || '');
   const [content, setContent] = useState(noteToEdit?.content || '');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  const [users, setUsers] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
+
+  // Simple fetching logic for users
+  useEffect(() => {
+    axios.get('/users')
+      .then(response => {
+        console.log('Users fetched:', response);
+        setUsers(response); // Directly set the fetched users
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
 
   const handleSaveNote = async (e) => {
     e.preventDefault();
@@ -26,8 +42,13 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        data: { title, content },
+        data: { 
+          title, 
+          content,
+          shared_with: selectedUsers.map(user => user.value), 
+        },
       });
+      
 
       setMessage(noteToEdit ? 'Note updated successfully!' : 'Note created successfully!');
       refreshList();
@@ -57,6 +78,18 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
+
+            <Select
+              isMulti
+              options={users.map(user => ({
+                value: user.id,
+                label: `${user.first_name} ${user.last_name}`,
+              }))}
+              value={selectedUsers}
+              onChange={setSelectedUsers}
+              placeholder="Share with..."
+            />
+
             <div className="createUpdate">
               <button type="submit" disabled={loading}>
                 {loading ? 'Saving...' : noteToEdit ? 'Update' : 'Create'}
