@@ -12,7 +12,7 @@ const List = ({ searchQuery }) => {
   const [noteToEdit, setNoteToEdit] = useState(null);
 
   const [noteToDelete, setNoteToDelete] = useState(null);
-const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
 
   const colors = ["#ffc2d1", "#e7c6ff", "#a3b18a", "#d4a373", "#c9ada7", "#9a8c98", "#ffe5d9"];
@@ -27,12 +27,11 @@ const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const fetchNotes = async () => {
     try {
-    // This will automatically use the base URL, so it becomes: https://notes.devlop.tech/api/notes
       const response = await axios.get('/notes');
       setNotes(response);
     } catch (error) {
       console.error("Error fetching notes:", error);
-      setNotes([]); // Set to empty array to avoid map error
+      setNotes([]);
     }
   };
 
@@ -50,8 +49,8 @@ const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     setNoteToDelete(id);
     setShowDeleteConfirm(true);
   };
-  
-  
+
+
   const handleDelete = async () => {
     try {
       await axios.delete(`/notes/${noteToDelete}`);
@@ -62,7 +61,7 @@ const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
       console.error("Error deleting note:", error);
     }
   };
-  
+
 
   const handleEdit = (note) => {
     setNoteToEdit(note);
@@ -81,78 +80,78 @@ const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   return (
     <div className="mainListContainer">
-    {showCreate ? (
-      <Create setShowCreate={setShowCreate} refreshList={fetchNotes} noteToEdit={noteToEdit} />
-    ) : (
-      <>
-        <h1 className="mainHeader">My Notes</h1>
-        <div className="add createNote" onClick={handleCreateNew}>
-          <img src={add} alt="Add Icon" />
-          <p>Create New</p>
-        </div>
-  
-        <div className="card-container">
-          {filteredNotes && filteredNotes.length > 0 ? (
-            filteredNotes.map((note, index) => (
-              <div key={note.id} className="card">
-                <div className="header-card">
-                  <div className="sub-header">
-                    <div
-                      className="point"
-                      style={{ backgroundColor: colors[index % colors.length] }}
-                    ></div>
-                    <p className="title">{note.title}</p>
-                  </div>
-  
-                  <div className="icons-container">
-                    <img
-                      className="icons"
-                      src={pen}
-                      alt="Edit"
-                      onClick={() => handleEdit(note)}
-                    />
-                    <img
-  className="icons"
-  src={trash}
-  alt="Delete"
-  onClick={() => confirmDelete(note.id)}
-/>
+      {showCreate ? (
+        <Create setShowCreate={setShowCreate} refreshList={fetchNotes} noteToEdit={noteToEdit} />
+      ) : (
+        <>
+          <h1 className="mainHeader">My Notes</h1>
+          <div className="add createNote" onClick={handleCreateNew}>
+            <img src={add} alt="Add Icon" />
+            <p>Create New</p>
+          </div>
 
+          <div className="card-container">
+            {filteredNotes && filteredNotes.length > 0 ? (
+              filteredNotes.map((note, index) => (
+                <div key={note.id} className="card">
+                  <div className="header-card">
+                    <div className="sub-header">
+                      <div
+                        className="point"
+                        style={{ backgroundColor: colors[index % colors.length] }}
+                      ></div>
+                      <p className="title">{note.title}</p>
+                    </div>
+
+                    <div className="icons-container">
+                      <img
+                        className="icons"
+                        src={pen}
+                        alt="Edit"
+                        onClick={() => handleEdit(note)}
+                      />
+                      <img
+                        className="icons"
+                        src={trash}
+                        alt="Delete"
+                        onClick={() => confirmDelete(note.id)}
+                      />
+
+                    </div>
                   </div>
+                  <div className="body-card">
+                    <p>{note.content}</p>
+                  </div>
+                  <p
+                    className="footer-card"
+                    style={{ backgroundColor: colors[index % colors.length] }}
+                  >
+                    {formatDate(note.date)}
+                  </p>
                 </div>
-                <div className="body-card">
-                  <p>{note.content}</p>
-                </div>
-                <p
-                  className="footer-card"
-                  style={{ backgroundColor: colors[index % colors.length] }}
-                >
-                  {formatDate(note.date)}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p>No notes found.</p>
-          )}
+              ))
+            ) : (
+              <p>No notes found.</p>
+            )}
+          </div>
+        </>
+      )}
+
+      {showDeleteConfirm && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>Are you sure you want to delete this note?</p>
+            <div className="modal-actions">
+              <button className="btn-confirm" onClick={handleDelete}>Yes</button>
+              <button className="btn-cancel" onClick={() => setShowDeleteConfirm(false)}>No</button>
+            </div>
+          </div>
         </div>
-      </>
-    )}
-  
-  {showDeleteConfirm && (
-  <div className="modal">
-    <div className="modal-content">
-      <p>Are you sure you want to delete this note?</p>
-      <div className="modal-actions">
-        <button className="btn-confirm" onClick={handleDelete}>Yes</button>
-        <button className="btn-cancel" onClick={() => setShowDeleteConfirm(false)}>No</button>
-      </div>
+      )}
+
     </div>
-  </div>
-)}
 
-  </div>
-  
-    
+
   );
 };
 

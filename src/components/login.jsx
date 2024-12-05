@@ -14,9 +14,8 @@ const Login = ({ setIsConected }) => {
         password,
       });
   
-      console.log("Full Response:", resp); // Log the entire response
+      console.log("Full Response:", resp); 
   
-      // Check for the token directly on the response object
       if (resp.token) {
         localStorage.setItem("token", resp.token);
         setData(newData);

@@ -1,4 +1,3 @@
-/* Navbar styles */
 .navbar {
   position: fixed;
   top: 0;
@@ -17,8 +16,6 @@
   align-items: center;
 }
 
-/* Search container - mobile-specific positioning */
-/* Ensure the search input has enough space */
 .search-container {
   position: relative;
   flex-grow: 1;
@@ -31,7 +28,6 @@
   display: none;
 }
 
-/* Fix issue with the search input being overlapped */
 @media (max-width: 767px) {
   .search-container {
     display: none !important;
@@ -40,8 +36,6 @@
     display: block;
   }
 }
-/* Search input */
-/* Search input */
 .search-input {
   padding-left: 35px;
   padding-right: 15px;
@@ -53,14 +47,12 @@
   margin: auto;
 }
 
-/* Remove the default blue outline and add custom focus outline */
 .search-input:focus {
-  outline: none; /* Remove default blue outline */
-  border-color: #ffeba7; /* Optional: Change the border color */
-  box-shadow: 0 0 0 3px rgba(255, 235, 167, 0.5); /* Custom outline using box-shadow */
+  outline: none;
+  border-color: #ffeba7;
+  box-shadow: 0 0 0 3px rgba(255, 235, 167, 0.5);
 }
 
-/* Search icon */
 .search-icon {
   position: absolute;
   left: 10px;
@@ -70,7 +62,6 @@
   font-size: 1rem;
 }
 
-/* Navbar brand */
 .navbar-brand {
   color: #000;
   text-decoration: none;
@@ -85,82 +76,73 @@
   display: none;
 }
 
-/* Left-side container */
 .left-side {
-  position: fixed; /* Fixed positioning for desktop */
-  top: 60px; /* Adjust to avoid navbar */
-  left: 0; /* Space from the left edge */
-  width: 200px; /* Fixed width for the left section */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #ffeba7; /* Background color */
+  background-color: #ffeba7;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays on top */
-  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
 }
 
-/* Media Query for Mobile */
 @media (max-width: 767px) {
-  /* Hide left-side and ensure it doesn't take up space */
   .left-side {
-    width: 0; /* Collapse width to 0 */
-    display: none; /* Completely remove it from the layout */
-    left: -200px; /* Move it off-screen */
-    padding: 0; /* Remove padding to save space */
+    width: 0;
+    display: none;
+    left: -200px;
+    padding: 0;
   }
   .leftItems {
-    display: block; /* Show left items (dropdown on mobile) */
+    display: block;
   }
 }
-/* Left-side container */
 .left-side {
-  position: fixed; /* Fixed positioning for desktop */
-  top: 60px; /* Adjust to avoid navbar */
-  left: 0; /* Space from the left edge */
-  width: 200px; /* Fixed width for the left section */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #ffeba7; /* Background color */
+  background-color: #ffeba7;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays on top */
-  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
 }
 
-/* Med/* Media Query for Mobile */
 @media (max-width: 767px) {
-  /* Hide left-side and ensure it doesn't take up space */
   .left-side {
-    display: none; /* Completely remove it from the layout */
-    position: absolute; /* Ensure it's off the screen completely */
-    width: 0 !important; /* Collapse width to 0 */
-    height: 0 !important; /* Set height to 0 */
-    padding: 0 !important; /* Remove padding to save space */
-    margin: 0 !important; /* Remove margin to save space */
-    visibility: hidden !important; /* Ensure it is not visible */
+    display: none;
+    position: absolute;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    visibility: hidden !important;
   }
-  /* Apply overflow hidden to the parent container */
-  .parent-container { /* Replace with your actual parent class */
-    overflow: hidden; /* Prevent any overflow */
+  .parent-container {
+    overflow: hidden;
   }
-  /* Display mobile-specific items */
   .leftItems {
-    display: block; /* Show left items (dropdown on mobile) */
+    display: block;
   }
 }
-/* Add item inside left-side */
 .add {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between the image and text */
+  gap: 10px;
   padding: 10px;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth hover effects */
+  transition: all 0.3s ease;
 }
 
 .add p {
@@ -171,18 +153,16 @@
   color: #c3a645 !important;
 }
 
-/* Image inside add */
 .add img {
-  width: 20px; /* Adjust size as needed */
+  width: 20px;
   height: 20px;
 }
 
-/* Text inside add */
 .add p {
   margin: 0;
   font-size: 14px;
   color: #333;
-  font-weight: 500; /* Slightly bolder text */
+  font-weight: 500;
 }
 
 .sec-center {
@@ -194,7 +174,7 @@
 [type=checkbox]:checked,
 [type=checkbox]:not(:checked) {
   position: absolute;
-  width: 0; /* Eliminate extra clickable space */
+  width: 0;
   height: 0;
   opacity: 0;
   pointer-events: none;
@@ -206,7 +186,7 @@
   top: 40px;
   right: 40px;
   z-index: 20000;
-  display: flex; /* Make it only occupy the size of the visible element */
+  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -641,12 +621,11 @@ form.login-form textarea {
   background-color: #f2f2f2;
   border-radius: 4px;
   border: none;
-  resize: none; /* Prevent resizing for the textarea */
+  resize: none;
 }
 
-/* Textarea Specific Styles */
 form.login-form textarea {
-  height: 120px; /* Default height for textarea */
+  height: 120px;
   line-height: 1.5;
   overflow: auto;
   outline: none;
@@ -675,19 +654,18 @@ form.login-form textarea {
 }
 
 .card-container {
-  margin-left: 230px; /* Push the card container to the right of the left-side section */
+  margin-left: 230px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
-  width: calc(100% - 230px); /* Account for left-side width */
+  width: calc(100% - 230px);
 }
 
-/* Card styling */
 .card {
   display: flex;
   flex-direction: column;
-  width: 400px; /* Fixed width for cards */
+  width: 400px;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -734,11 +712,10 @@ form.login-form textarea {
 }
 
 .title {
-  font-size: 24px; /* Adjust the size to your preference */
+  font-size: 24px;
   font-weight: bold;
 }
 
-/* Style for the colored point */
 .point {
   width: 10px;
   height: 10px;
@@ -759,65 +736,62 @@ form.login-form textarea {
   margin-left: 239px;
 }
 
-/* Responsive Styles */
 @media (max-width: 767px) {
   .mainHeader {
     margin-left: 30px;
     margin-top: 70px;
-    margin-bottom: 0 !important; /* Remove left margin on mobile */
+    margin-bottom: 0 !important;
   }
   .createNote {
-    margin-left: 22px; /* Remove left margin on mobile */
+    margin-left: 22px;
     margin-top: 20px;
   }
   .card-container {
-    width: 100% !important; /* Full width on mobile */
-    padding: 10px; /* Adjust padding for mobile */
-    margin-left: 0; /* Remove left margin */
+    width: 100% !important;
+    padding: 10px;
+    margin-left: 0;
     margin-right: 0;
-    gap: 5px; /* Remove right margin */
+    gap: 5px;
   }
   .card {
-    width: 100%; /* Full width for cards on mobile */
-    margin: 10px 0; /* Margin for spacing between cards */
+    width: 100%;
+    margin: 10px 0;
   }
-  /* Hide left-side navigation */
   .left-side {
-    display: none; /* Hide left-side navigation on mobile */
+    display: none;
   }
 }
 html, body {
-  margin: 0 !important; /* Remove default margins */
-  padding: 0; /* Remove default paddings */
+  margin: 0 !important;
+  padding: 0;
   background-color: #eee;
-  box-sizing: border-box; /* Include padding and border in element's dimensions */
+  box-sizing: border-box;
   overflow-x: hidden;
 }
 
 select {
-  width: 100%; /* Full width for consistency */
-  padding: 10px; /* Add padding for a better click area */
-  font-size: 16px; /* Match text size with other inputs */
-  border: 1px solid #ccc; /* Subtle border for definition */
-  border-radius: 4px; /* Rounded corners */
-  background-color: #f9f9f9; /* Light background color */
-  color: #333; /* Dark text for readability */
-  outline: none; /* Remove default focus outline */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth focus effect */
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 select:focus {
-  border-color: #007bff; /* Highlight border on focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
-  background-color: #fff; /* Slightly brighter background */
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: #fff;
 }
 
 select option {
-  background-color: #fff; /* Ensure options have a white background */
-  color: #121111 !important; /* Consistent text color for options */
+  background-color: #fff;
+  color: #121111 !important;
 }
 
-/* Optional: Style for disabled select */
 select:disabled {
   background-color: #e9ecef;
   color: #6c757d;
@@ -859,4 +833,52 @@ select:disabled {
 
 .btn-cancel {
   background-color: #ccc;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.notification.success {
+  border-left: 5px solid #28a745;
+}
+
+.notification.error {
+  border-left: 5px solid #dc3545;
+}
+
+.notification p {
+  margin: 0;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=main.css.map */

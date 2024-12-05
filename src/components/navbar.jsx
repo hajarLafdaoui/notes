@@ -4,9 +4,7 @@ import { faArrowRight, faPlus, faTimes, faBars } from '@fortawesome/free-solid-s
 import add from '../assets/images/add.png';
 import trash from '../assets/images/trash.png';
 import folder from '../assets/images/folder.png';
-import Search from './Search';  // Import the Search component
-import UpdatePassword from './UpdatePassword';
-
+import Search from './Search';  
 const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [subDropdownOpen, setSubDropdownOpen] = useState(false);
@@ -26,7 +24,6 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
     setIsConected(false);
   };
 
-  // Close dropdown if clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -49,7 +46,6 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
             <div className="d-flex align-items-center logo-container">
               <a className="navbar-brand" href="#">MindPad</a>
             </div>
-            {/* Use the Search component here */}
             <Search setSearchQuery={setSearchQuery} />
             <div className="sec-center p-0 m-0" ref={dropdownRef}>
               <input
@@ -92,7 +88,6 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
         </div>
       </nav>
 
-      {/* Left-side navigation */}
       <div className="left-side">
         <div className="add" onClick={() => setView('allNotes')}>
           <img src={folder} alt="Folder Icon" />

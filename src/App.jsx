@@ -5,10 +5,7 @@ import Login from './components/login.jsx';
 import List from './components/List.jsx';
 import Navbar from './components/navbar.jsx';
 import Create from './components/Create.jsx'; 
-
-// Import Axios Setup to apply global configurations
 import './components/axiosSetup'; 
-
 import UpdatePassword from './components/UpdatePassword.jsx';
 
 function App() {
@@ -18,6 +15,7 @@ function App() {
 
   return (
     <>
+    
       {!isConected ? (
         <Login setIsConected={setIsConected} />
       ) : (
@@ -26,8 +24,6 @@ function App() {
           {view === 'allNotes' && <List searchQuery={searchQuery} />}
           {view === 'create' && <Create />} 
             {view === 'updatePassword' && <UpdatePassword />}
-    {/* {view === 'allNotes' && <AllNotes />} */}
-    {/* {view === 'create' && <CreateNote />} */}
         </>
       )}
     </>

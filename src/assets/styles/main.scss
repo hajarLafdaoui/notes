@@ -4,78 +4,123 @@
 @import 'cards';
 
 html, body {
-    margin: 0 !important; /* Remove default margins */
-    padding: 0; /* Remove default paddings */
-    background-color:  #eee;
-    
-    box-sizing: border-box; /* Include padding and border in element's dimensions */
-    overflow-x: hidden;
-  }
-  select {
-    width: 100%; /* Full width for consistency */
-    padding: 10px; /* Add padding for a better click area */
-    font-size: 16px; /* Match text size with other inputs */
-    border: 1px solid #ccc; /* Subtle border for definition */
-    border-radius: 4px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background color */
-    color: #333; /* Dark text for readability */
-    outline: none; /* Remove default focus outline */
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth focus effect */
-  }
-  
-  select:focus {
-    border-color: #007bff; /* Highlight border on focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
-    background-color: #fff; /* Slightly brighter background */
-  }
-  
-  select option {
-    background-color: #fff; /* Ensure options have a white background */
-    color: #121111 !important; /* Consistent text color for options */
-  }
-  
-  /* Optional: Style for disabled select */
-  select:disabled {
-    background-color: #e9ecef;
-    color: #6c757d;
-    cursor: not-allowed;
-  }
+  margin: 0 !important;
+  padding: 0;
+  background-color:  #eee;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
 
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: #fff;
+}
+
+select option {
+  background-color: #fff;
+  color: #121111 !important;
+}
+
+select:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-actions button {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.notification.success {
+  border-left: 5px solid #28a745;
+}
+
+.notification.error {
+  border-left: 5px solid #dc3545;
+}
+
+.notification p {
+  margin: 0;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 300px;
-    text-align: center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .modal-actions button {
-    margin: 0 10px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-confirm {
-    background-color: #ff4d4d;
-    color: white;
-  }
-  
-  .btn-cancel {
-    background-color: #ccc;
-  }
-  
+}

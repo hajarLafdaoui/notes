@@ -1,4 +1,3 @@
-/* Navbar styles */
 .navbar {
   position: fixed;
   top: 0;
@@ -17,8 +16,6 @@
   align-items: center;
 }
 
-/* Search container - mobile-specific positioning */
-/* Ensure the search input has enough space */
 .search-container {
   position: relative;
   flex-grow: 1;
@@ -26,24 +23,20 @@
   margin: 0 auto;
   z-index: 2222 !important;
 }
-.MOBILE{
+
+.MOBILE {
   display: none;
 }
 
-/* Fix issue with the search input being overlapped */
 @media (max-width: 767px) {
   .search-container {
     display: none !important;
   }
-  .MOBILE{
+  .MOBILE {
     display: block;
   }
-  
 }
 
-
-/* Search input */
-/* Search input */
 .search-input {
   padding-left: 35px;
   padding-right: 15px;
@@ -55,14 +48,12 @@
   margin: auto;
 }
 
-/* Remove the default blue outline and add custom focus outline */
 .search-input:focus {
-  outline: none; /* Remove default blue outline */
-  border-color: #ffeba7; /* Optional: Change the border color */
-  box-shadow: 0 0 0 3px rgba(255, 235, 167, 0.5); /* Custom outline using box-shadow */
+  outline: none;
+  border-color: #ffeba7;
+  box-shadow: 0 0 0 3px rgba(255, 235, 167, 0.5);
 }
 
-/* Search icon */
 .search-icon {
   position: absolute;
   left: 10px;
@@ -72,7 +63,6 @@
   font-size: 1rem;
 }
 
-/* Navbar brand */
 .navbar-brand {
   color: #000;
   text-decoration: none;
@@ -83,92 +73,79 @@
   color: #ffeba7;
 }
 
-
-.leftItems{
+.leftItems {
   display: none;
 }
-/* Left-side container */
+
 .left-side {
-  position: fixed; /* Fixed positioning for desktop */
-  top: 60px; /* Adjust to avoid navbar */
-  left: 0; /* Space from the left edge */
-  width: 200px; /* Fixed width for the left section */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #ffeba7; /* Background color */
+  background-color: #ffeba7;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays on top */
-  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
 }
 
-/* Media Query for Mobile */
 @media (max-width: 767px) {
-  /* Hide left-side and ensure it doesn't take up space */
   .left-side {
-    width: 0; /* Collapse width to 0 */
-    display: none; /* Completely remove it from the layout */
-    left: -200px; /* Move it off-screen */
-    padding: 0; /* Remove padding to save space */
+    width: 0;
+    display: none;
+    left: -200px;
+    padding: 0;
   }
-
   .leftItems {
-    display: block; /* Show left items (dropdown on mobile) */
+    display: block;
   }
 }
-/* Left-side container */
+
 .left-side {
-  position: fixed; /* Fixed positioning for desktop */
-  top: 60px; /* Adjust to avoid navbar */
-  left: 0; /* Space from the left edge */
-  width: 200px; /* Fixed width for the left section */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #ffeba7; /* Background color */
+  background-color: #ffeba7;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays on top */
-  transition: left 0.3s ease-in-out; /* Smooth transition for mobile */
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
 }
 
-/* Med/* Media Query for Mobile */
 @media (max-width: 767px) {
-  /* Hide left-side and ensure it doesn't take up space */
   .left-side {
-    display: none; /* Completely remove it from the layout */
-    position: absolute; /* Ensure it's off the screen completely */
-    width: 0 !important; /* Collapse width to 0 */
-    height: 0 !important; /* Set height to 0 */
-    padding: 0 !important; /* Remove padding to save space */
-    margin: 0 !important; /* Remove margin to save space */
-    visibility: hidden !important; /* Ensure it is not visible */
+    display: none;
+    position: absolute;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    visibility: hidden !important;
   }
-
-  /* Apply overflow hidden to the parent container */
-  .parent-container { /* Replace with your actual parent class */
-    overflow: hidden; /* Prevent any overflow */
+  .parent-container {
+    overflow: hidden;
   }
-
-  /* Display mobile-specific items */
   .leftItems {
-    display: block; /* Show left items (dropdown on mobile) */
+    display: block;
   }
 }
 
-/* Add item inside left-side */
- .add {
+.add {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between the image and text */
+  gap: 10px;
   padding: 10px;
-
-
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth hover effects */
+  transition: all 0.3s ease;
 }
 
 .add p {
@@ -178,29 +155,15 @@
 .add p:hover {
   color: #c3a645 !important;
 }
-/* Image inside add */
+
 .add img {
-  width: 20px; /* Adjust size as needed */
+  width: 20px;
   height: 20px;
 }
 
-/* Text inside add */
 .add p {
   margin: 0;
   font-size: 14px;
   color: #333;
-  font-weight: 500; /* Slightly bolder text */
+  font-weight: 500;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// 
