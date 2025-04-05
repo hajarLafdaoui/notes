@@ -63,7 +63,7 @@ const Create = ({ setShowCreate, refreshList, noteToEdit }) => {
 
   return (
     <div className="login-page-wrapper">
-      <div className="login-page">
+      <div className="login-page" style={{marginTop:'30px'}}>
         <div className="form">
           <h1>{noteToEdit ? 'Edit Note' : 'Create Note'}</h1>
           <form className="login-form" onSubmit={handleSaveNote}>

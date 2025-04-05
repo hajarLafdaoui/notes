@@ -41,7 +41,7 @@ const UpdatePassword = () => {
 
   return (
     <div>
-      <div className="login-page-wrapper yellow">
+      <div className="login-page-wrapper yllow">
         <div className="login-page">
           <div className="form">
             <h2 className="loginTitle">Update Password</h2>

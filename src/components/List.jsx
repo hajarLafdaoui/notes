@@ -5,7 +5,7 @@ import pen from '../assets/images/pen.png';
 import trash from '../assets/images/trash.png';
 import add from '../assets/images/add.png';
 
-const List = ({ searchQuery }) => {
+const List = ({ searchQuery, deletedNotes, setDeletedNotes }) => {
   const [notes, setNotes] = useState([]);
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [showCreate, setShowCreate] = useState(false);
@@ -13,6 +13,7 @@ const List = ({ searchQuery }) => {
 
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  // const [deletedNotes, setDeletedNotes] = useState([])
 
 
   const colors = ["#ffc2d1", "#e7c6ff", "#a3b18a", "#d4a373", "#c9ada7", "#9a8c98", "#ffe5d9"];
@@ -53,7 +54,12 @@ const List = ({ searchQuery }) => {
 
   const handleDelete = async () => {
     try {
+      const noteToBeDeleted = notes.find(note => note.id === noteToDelete);
       await axios.delete(`/notes/${noteToDelete}`);
+      setDeletedNotes([...deletedNotes, {
+        ...noteToBeDeleted,
+        deletedAt: new Date().toISOString() // Add deletion timestamp
+      }]);
       setNotes(notes.filter(note => note.id !== noteToDelete));
       setShowDeleteConfirm(false);
       setNoteToDelete(null);
@@ -61,6 +67,7 @@ const List = ({ searchQuery }) => {
       console.error("Error deleting note:", error);
     }
   };
+
 
 
   const handleEdit = (note) => {

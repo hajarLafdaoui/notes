@@ -97,10 +97,11 @@ const Navbar = ({ setView, setSearchQuery, setIsConected }) => {
           <img src={add} alt="Add Icon" />
           <p>Create Note</p>
         </div>
-        <div className="add">
-          <img src={trash} alt="Trash Icon" />
-          <p>Trash</p>
-        </div>
+<div className="add" onClick={() => setView('deleted-notes')}>
+  <img src={trash} alt="Trash Icon" />
+  <p onClick={() => setView('deleted-notes')}>Trash</p>
+  </div>
+
       </div>
     </>
   );
